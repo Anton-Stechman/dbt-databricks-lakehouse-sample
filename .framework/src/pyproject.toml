@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dbt-databricks-sample-project"
+version = "0.0.1"
+description = "Sample project for implementing dbt in a Databricks Data Lakehouse"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.13,<3.14"
+authors = [
+  {name = "Anton Stechman", email = "stechman.ab@gmail.com"}
+]
+dependencies = [
+    "dbt-core"
+    , "dbt-databricks"
+]
+
+[project.scripts]
+menu = "framework.cli:main"

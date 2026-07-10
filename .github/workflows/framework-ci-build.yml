@@ -1,0 +1,41 @@
+name: Framework-CI-Build
+
+on:
+  push:
+    branches: ['**']
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .framework/src/build-deps.txt
+          pip install -e .framework/src/
+        continue-on-error: false
+
+      - name: Lint with pylint
+        run: |
+          pylint .framework/src/
+        continue-on-error: false
+
+      - name: Run tests with PyTest
+        run: |
+          pytest .framework/tests/
+        continue-on-error: false
+
+      - name: Build package
+        run: |
+          python -m build .framework/src/
+        continue-on-error: false
