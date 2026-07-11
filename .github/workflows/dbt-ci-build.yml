@@ -28,31 +28,20 @@ jobs:
         run: |
           sqlfluff lint --dialect databricks dbt/
         continue-on-error: false
-
-      - name: Set up dbt profile
-        run: |
-          mkdir -p ~/.dbt
-          cat > ~/.dbt/profiles.yml << EOF
-          databricks_lakehouse_sample:
-            target: ci
-            outputs:
-              ci:
-                type: databricks
-                catalog: workspace
-                schema: ci
-                host: dummy-host.cloud.databricks.com
-                http_path: /sql/1.0/warehouses/dummy
-                token: dummy-token
-                threads: 4
-          EOF
-
       - name: dbt parse
         run: |
-          dbt parse --project-dir dbt/
+          dbt parse --project-dir dbt/ --profiles-dir  .
         continue-on-error: true
+        env:
+          DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
+          DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
+          DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}
 
       - name: Generate dbt docs
-        if: false # Skip this step for now
         run: |
-          dbt docs generate --project-dir dbt/ || echo "Skipping docs generate - no live connection yet"
+          dbt docs generate --project-dir dbt/ --profiles-dir  .
         continue-on-error: true
+        env:
+          DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
+          DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
+          DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}

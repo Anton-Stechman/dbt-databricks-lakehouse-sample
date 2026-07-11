@@ -1,0 +1,12 @@
+databricks_lakehouse_sample:
+  target: ci
+  outputs:
+
+    ci:
+      type: databricks
+      catalog: workspace # or your Unity Catalog name, e.g. main
+      schema: anton_sandpit
+      host: "{{ env_var('DBT_DATABRICKS_HOST') }}"
+      http_path: "{{ env_var('DBT_DATABRICKS_HTTP_PATH') }}"
+      token: "{{ env_var('DBT_DBT_DATABRICKS_TOKEN') }}"
+      threads: 4
