@@ -160,7 +160,7 @@ def test_menu_items_map_to_expected_callables():
         "dbt-compile": dbt_utils.dbt_compile,
         "dbt-docs-generate": dbt_utils.dbt_docs_generate,
         "dbt-docs-view": dbt_utils.dbt_docs_view,
-        "dbt-test": dbt_utils.dbt_test,
+        "dbt-test": dbt_utils.dbt_test
     }
 
-    assert menus.MENU_ITEMS == {**{"exit": None}, **expected}
+    assert menus.DBT_MENU_ITEMS == {**{"exit": None}, **expected}
