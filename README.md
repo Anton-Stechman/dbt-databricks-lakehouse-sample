@@ -7,9 +7,14 @@ The purposee of this project is to implement a simple dbt framework and data lak
 This project was built in the space of about 7 hours with no prior expeereience or useage with databricks.
 
 # Project Requirements
-- `python>=3.13<3.14`
+- `python>=3.13, <3.14`
 - `pip>=26.0.1`
 - databricks account [signup](databricks.com)
+- GitHub repository secrets:
+  - `DBT_HOST`
+  - `DBT_HTTP_PATH`
+  - `DBT_TOKEN`
+  - `GITHUB_TOKEN` (provided automatically by GitHub Actions)
 
 ## Setup
 to setup this project on a new machine:
