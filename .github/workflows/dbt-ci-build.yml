@@ -46,12 +46,13 @@ jobs:
                 threads: 4
           EOF
 
-      - name: Dbt Compile
+      - name: dbt parse
         run: |
           dbt parse --project-dir dbt/
         continue-on-error: true
 
       - name: Generate dbt docs
+        if: false # Skip this step for now
         run: |
-          dbt docs generate --project-dir dbt/
+          dbt docs generate --project-dir dbt/ || echo "Skipping docs generate - no live connection yet"
         continue-on-error: true
