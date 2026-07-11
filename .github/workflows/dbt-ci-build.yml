@@ -1,0 +1,58 @@
+name: dbt-CI-Build
+
+on:
+  push:
+    branches: ['**']
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r dbt/dbt-deps.txt
+        continue-on-error: false
+
+      - name: Lint with sqlfluff
+        run: |
+          sqlfluff lint --dialect databricks dbt/
+        continue-on-error: false
+
+      - name: Set up dbt profile
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << EOF
+          databricks_lakehouse_sample:
+            target: ci
+            outputs:
+              ci:
+                type: databricks
+                catalog: workspace
+                schema: ci
+                host: dummy-host.cloud.databricks.com
+                http_path: /sql/1.0/warehouses/dummy
+                token: dummy-token
+                threads: 4
+          EOF
+
+      - name: dbt parse
+        run: |
+          dbt parse --project-dir dbt/
+        continue-on-error: true
+
+      - name: Generate dbt docs
+        if: false # Skip this step for now
+        run: |
+          dbt docs generate --project-dir dbt/ || echo "Skipping docs generate - no live connection yet"
+        continue-on-error: true

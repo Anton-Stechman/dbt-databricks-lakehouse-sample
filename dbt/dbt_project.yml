@@ -1,0 +1,38 @@
+name: 'databricks_lakehouse_sample'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'databricks_lakehouse_sample'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+docs-paths: ["docs"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# General model configurations. Databricks lakehouse projects typically
+# organize models into staging, intermediate, and marts layers, each
+# materialized differently and mapped to its own schema.
+models:
+  databricks_lakehouse_sample:
+    +file_format: delta
+
+    staging:
+      +materialized: view
+      +schema: staging
+
+    intermediate:
+      +materialized: ephemeral
+
+    marts:
+      +materialized: table
+      +schema: marts
+      +file_format: delta
