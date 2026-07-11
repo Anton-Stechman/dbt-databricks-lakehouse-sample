@@ -3,6 +3,7 @@ models:
   - name: stg_{name}
     description: Staging view for {description}
     config:
+      materialized: ephemeral
       contract:
         enforced: true
         alias_types: true

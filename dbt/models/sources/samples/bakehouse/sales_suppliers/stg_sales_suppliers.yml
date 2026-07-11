@@ -3,6 +3,7 @@ models:
 - name: stg_sales_suppliers
   description: Staging view for Sales Suppliers
   config:
+    materialized: ephemeral
     contract:
       enforced: true
       alias_types: true

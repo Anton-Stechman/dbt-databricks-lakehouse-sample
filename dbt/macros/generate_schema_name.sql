@@ -5,8 +5,6 @@
         {{ dirs[3] }}
     {%- elif dirs|length >= 3 and dirs[1] == "domains" -%}
         {{ dirs[2] }}
-    {%- elif dirs|length >= 2 and dirs[1] == "helpers" -%}
-        {{ dirs[1] }}
     {%- else -%}
         {%- if custom_name is not none -%}
             {{ custom_name }}

@@ -3,6 +3,7 @@ models:
 - name: stg_sales_franchises
   description: Staging view for Sales Franchises
   config:
+    materialized: ephemeral
     contract:
       enforced: true
       alias_types: true
