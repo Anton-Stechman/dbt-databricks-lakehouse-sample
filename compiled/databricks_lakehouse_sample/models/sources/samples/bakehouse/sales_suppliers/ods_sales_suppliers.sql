@@ -14,7 +14,7 @@ WITH staging_data AS (
         , is_deleted
         , effective_from
         , effective_to
-    FROM `workspace`.`project_prod`.`stg_sales_suppliers`
+    FROM `prod`.`default`.`stg_sales_suppliers`
 )
 
 SELECT
