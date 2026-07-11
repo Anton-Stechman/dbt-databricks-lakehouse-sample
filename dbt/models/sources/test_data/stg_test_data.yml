@@ -9,6 +9,9 @@ models:
       - name: id
         data_type: BIGINT
         description: Id
+        data_tests:
+          - unique
+          - not_null
       - name: description
         data_type: VARCHAR(150)
         description: Description

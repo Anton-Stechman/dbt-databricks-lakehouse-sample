@@ -1,8 +1,12 @@
-name: Framework-CI-Build
-
+name: framework-ci-build
 on:
   push:
-    branches: ['**']
+    branches-ignore:
+      - main
+      - prod
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-test:
