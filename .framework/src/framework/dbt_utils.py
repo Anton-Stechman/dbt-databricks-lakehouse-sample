@@ -1,18 +1,15 @@
-"""Contains dbt specific utils"""
-# Builtins
+"""Contains dbt-specific utilities."""
+
 import subprocess
 from enum import Enum
 
-# Framework imports
-from .utils import (
-    file_exists
-    , dir_exists
-    , concatenate
-    , menu_header
-)
+from .utils import concatenate, dir_exists, file_exists, menu_header
+
 
 class COMMAND(Enum):
-    RUN ="dbt run"
+    """Supported dbt command names."""
+
+    RUN = "dbt run"
     BUILD = "dbt build"
     SEED = "dbt seed"
     COMPILE = "dbt compile"
@@ -20,25 +17,32 @@ class COMMAND(Enum):
     PARSE = "dbt parse"
     DOCS = "dbt docs"
 
+
 class SUBCOMMAND(Enum):
-    SELECT ="--select"
+    """Supported dbt subcommands."""
+
+    SELECT = "--select"
     GENERATE = "generate"
     SERVE = "serve"
 
-def dbt_command(cmd: COMMAND, profiles_dir: str = ".locals", project_dir: str = "dbt", subcmd: dict[SUBCOMMAND, str] = None):
-    """
-    Run a dbt command using the COMMAND and SUBCOMMAND enum classes
-    """
-    subprocess.run("cls", shell=True)
+
+def dbt_command(
+    cmd: COMMAND
+    , profiles_dir: str = ".locals"
+    , project_dir: str = "dbt"
+    , subcmd: dict[SUBCOMMAND, str | None] | None = None
+) -> None:
+    """Run a dbt command using the provided command and subcommands."""
+    subprocess.run("cls", shell=True, check=False)
     menu_header(cmd.value)
-    # Validate required directories and files exist
+
     _ = dir_exists(profiles_dir, autocreate=False, on_fail="raise")
     _ = dir_exists(project_dir, autocreate=False, on_fail="raise")
     _ = file_exists(profiles_dir, "profiles.yml", on_fail="raise")
 
-    cmd_hooks: str = concatenate("--project-dir", project_dir, "--profiles-dir", profiles_dir)
-    command: str = cmd.value
-    subcommands: list = []
+    cmd_hooks = concatenate("--project-dir", project_dir, "--profiles-dir", profiles_dir)
+    command = cmd.value
+    subcommands = []
     if subcmd:
         for key, val in subcmd.items():
             if not isinstance(key, SUBCOMMAND):
@@ -57,30 +61,45 @@ def dbt_command(cmd: COMMAND, profiles_dir: str = ".locals", project_dir: str = 
         print(f"dbt command failed with exit code {exc.returncode}")
         print("See the dbt output above for details.")
     finally:
-        _ = input("Press enter to continue... ")
+        input("Press enter to continue... ")
 
 
-def dbt_run():
+def dbt_run() -> None:
+    """Run the dbt models."""
     dbt_command(COMMAND.RUN)
 
-def dbt_run_specific():
+
+def dbt_run_specific() -> None:
+    """Run a specific dbt model or selection."""
     node = input("enter node name: ")
     dbt_command(COMMAND.RUN, subcmd={SUBCOMMAND.SELECT: node})
 
-def dbt_build():
+
+def dbt_build() -> None:
+    """Run the full dbt build pipeline."""
     dbt_command(COMMAND.BUILD)
 
-def dbt_seed():
+
+def dbt_seed() -> None:
+    """Load dbt seeds."""
     dbt_command(COMMAND.SEED)
 
-def dbt_compile():
+
+def dbt_compile() -> None:
+    """Compile the dbt project."""
     dbt_command(COMMAND.COMPILE)
 
-def dbt_docs_generate():
+
+def dbt_docs_generate() -> None:
+    """Generate dbt documentation."""
     dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.GENERATE: None})
 
-def dbt_docs_view():
+
+def dbt_docs_view() -> None:
+    """Serve dbt documentation locally."""
     dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.SERVE: None})
 
-def dbt_test():
-    dbt_command((COMMAND.TEST))
+
+def dbt_test() -> None:
+    """Run the dbt tests."""
+    dbt_command(COMMAND.TEST)

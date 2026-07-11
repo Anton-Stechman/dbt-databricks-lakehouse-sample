@@ -1,30 +1,29 @@
-"""Framework's cli script - this is the main user-entry point for the framework."""
-# builtins
+"""Framework's CLI script - the main user-entry point for the framework."""
+
+import argparse
 import os
 import subprocess
-import argparse
 
-# 3rd Party imports
 import yaml
 
-# Framework imports
 from .menus import main_menu
-from .utils import file_exists, dir_exists, menu_header
+from .utils import dir_exists, file_exists, menu_header
 
-def initialise():
-    """initialise project"""
-    subprocess.run("cls", shell=True)
+
+def initialise() -> None:
+    """Initialise the project configuration."""
+    subprocess.run("cls", shell=True, check=False)
     menu_header("dbt-databricks-sample framework cli")
     print("Initialising framework")
     print("checking for .locals folder")
-    _ =  dir_exists(".locals") # creates dir if not exists
+    _ = dir_exists(".locals")
     print("cheking for dbt profile")
     if not file_exists(".locals", "profiles.yml", on_fail="return"):
         print("dbt profile not found... creating a new profile...")
         user_profile: dict = {
             "databricks_lakehouse_sample": {
                 "target": "dev"
-                , "ouputs": {
+                , "outputs": {
                     "dev": {
                         "type": "databricks"
                     }
@@ -49,12 +48,11 @@ def initialise():
             print("profile configuration complete..")
     else:
         print("profile found...")
-        return
 
 
-
-def main():
-    subprocess.run(["cls"], check=True, shell=True)
+def main() -> None:
+    """Run the CLI entry point."""
+    subprocess.run("cls", shell=True, check=False)
     parser = argparse.ArgumentParser(
         prog="framework"
         , description="dbt-databricks-sample framework cli"
