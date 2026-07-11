@@ -80,7 +80,7 @@ def menu_header(text: str, width: int=50, decorator: str = "="):
     print(text)
     print(f"{decorator * width}")
 
-def menu_items(*args: str):
+def menu_items(*args: str, response_type: type = int):
     """print menu items"""
     index: int = 1
     if args:
@@ -88,4 +88,4 @@ def menu_items(*args: str):
             print(f"[{index}] {arg}")
             index += 1
         print("[0] exit")
-        return int(input("select an option: "))
+        return input("select an option: ")

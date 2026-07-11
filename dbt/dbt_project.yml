@@ -10,6 +10,7 @@ model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
+docs-paths: ["docs"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 

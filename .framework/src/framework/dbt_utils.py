@@ -13,6 +13,7 @@ from .utils import (
 
 class COMMAND(Enum):
     RUN ="dbt run"
+    BUILD = "dbt build"
     SEED = "dbt seed"
     COMPILE = "dbt compile"
     TEST = "dbt test"
@@ -50,4 +51,36 @@ def dbt_command(cmd: COMMAND, profiles_dir: str = ".locals", project_dir: str = 
     else:
         command = concatenate(command, cmd_hooks)
 
-    subprocess.run(command, shell=True, check=True)
+    try:
+        subprocess.run(command, shell=True, check=True)
+    except subprocess.CalledProcessError as exc:
+        print(f"dbt command failed with exit code {exc.returncode}")
+        print("See the dbt output above for details.")
+    finally:
+        _ = input("Press enter to continue... ")
+
+
+def dbt_run():
+    dbt_command(COMMAND.RUN)
+
+def dbt_run_specific():
+    node = input("enter node name: ")
+    dbt_command(COMMAND.RUN, subcmd={SUBCOMMAND.SELECT: node})
+
+def dbt_build():
+    dbt_command(COMMAND.BUILD)
+
+def dbt_seed():
+    dbt_command(COMMAND.SEED)
+
+def dbt_compile():
+    dbt_command(COMMAND.COMPILE)
+
+def dbt_docs_generate():
+    dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.GENERATE: None})
+
+def dbt_docs_view():
+    dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.SERVE: None})
+
+def dbt_test():
+    dbt_command((COMMAND.TEST))
