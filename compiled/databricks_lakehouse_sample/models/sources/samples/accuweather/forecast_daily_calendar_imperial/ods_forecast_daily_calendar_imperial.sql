@@ -92,7 +92,7 @@ WITH staging_data AS (
         , is_deleted
         , effective_from
         , effective_to
-    FROM `prod`.`default`.`stg_forecast_daily_calendar_imperial`
+    FROM `prod`.`accuweather`.`stg_forecast_daily_calendar_imperial`
 )
 
 SELECT

@@ -14,7 +14,7 @@ WITH staging_data AS (
         , is_deleted
         , effective_from
         , effective_to
-    FROM `prod`.`default`.`stg_sales_transactions`
+    FROM `prod`.`bakehouse`.`stg_sales_transactions`
 )
 
 SELECT

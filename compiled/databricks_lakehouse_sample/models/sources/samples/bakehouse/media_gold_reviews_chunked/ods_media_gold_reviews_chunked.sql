@@ -9,7 +9,7 @@ WITH staging_data AS (
         , is_deleted
         , effective_from
         , effective_to
-    FROM `prod`.`default`.`stg_media_gold_reviews_chunked`
+    FROM `prod`.`bakehouse`.`stg_media_gold_reviews_chunked`
 )
 
 SELECT

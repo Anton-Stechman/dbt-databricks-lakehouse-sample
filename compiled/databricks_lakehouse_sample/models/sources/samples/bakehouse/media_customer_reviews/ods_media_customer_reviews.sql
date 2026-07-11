@@ -8,7 +8,7 @@ WITH staging_data AS (
         , is_deleted
         , effective_from
         , effective_to
-    FROM `prod`.`default`.`stg_media_customer_reviews`
+    FROM `prod`.`bakehouse`.`stg_media_customer_reviews`
 )
 
 SELECT
