@@ -31,10 +31,10 @@ jobs:
 
       - name: Dbt Compile
         run: |
-          dbt compile --project-dir dbt
+          dbt compile --project-dir ./dbt/
         continue-on-error: false
 
       - name: Generate dbt docs
         run: |
-          dbt docs generate --project-dir dbt
+          dbt docs generate --project-dir ./dbt/
         continue-on-error: false

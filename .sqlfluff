@@ -1,0 +1,11 @@
+[sqlfluff]
+# Prefer leading commas in select lists and other multiline clauses.
+# This project uses a leading-comma style rather than trailing-comma style.
+# Allow the WHERE/JOIN indentation style used in this project without flagging it as an error.
+exclude_rules = LT02
+
+[sqlfluff:layout:type:comma]
+line_position = leading
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
