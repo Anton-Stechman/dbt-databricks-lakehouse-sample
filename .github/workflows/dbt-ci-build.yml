@@ -64,7 +64,7 @@ jobs:
       - name: Clean up CI schema
         if: always()
         run: |
-          dbt run-operation drop_schema --project-dir dbt/ --profiles-dir dbt/ --args '{schema: ci}' --target ${{ env.TARGET }}
+          dbt run-operation drop_schema --project-dir dbt/ --profiles-dir dbt/ --args '{schema: default}' --target ${{ env.TARGET }}
 
       - name: Generate dbt docs
         run: |
