@@ -20,18 +20,22 @@ from .dbt_utils import (
     , dbt_run_specific
     , dbt_seed
     , dbt_test
+    , dbt_parse
+    , dbt_deps
 )
 
 DBT_MENU_ITEMS: dict[str, Callable | None] = {
     "exit": None
-    , "dbt-run": dbt_run
-    , "dbt-run-specific": dbt_run_specific
-    , "dbt-run-full": dbt_build
-    , "dbt-seed": dbt_seed
-    , "dbt-compile": dbt_compile
-    , "dbt-docs-generate": dbt_docs_generate
-    , "dbt-docs-view": dbt_docs_view
-    , "dbt-test": dbt_test
+    , "run": dbt_run
+    , "run specific": dbt_run_specific
+    , "test": dbt_test
+    , "build": dbt_build
+    , "seed": dbt_seed
+    , "deps": dbt_deps
+    , "parse": dbt_parse
+    , "compile": dbt_compile
+    , "generate docs": dbt_docs_generate
+    , "view docs": dbt_docs_view
 }
 
 def dbt_menu() -> None:

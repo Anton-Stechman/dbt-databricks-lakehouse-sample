@@ -1,14 +1,18 @@
 """Contains dbt-specific utilities."""
-
+# builtins
 import subprocess
 from enum import Enum
 
-from .utils import concatenate, dir_exists, file_exists, menu_header
-
+# Framework imports
+from .utils import (
+    concatenate
+    , dir_exists
+    , file_exists
+    , menu_header
+)
 
 class COMMAND(Enum):
     """Supported dbt command names."""
-
     RUN = "dbt run"
     BUILD = "dbt build"
     SEED = "dbt seed"
@@ -16,15 +20,13 @@ class COMMAND(Enum):
     TEST = "dbt test"
     PARSE = "dbt parse"
     DOCS = "dbt docs"
-
+    DEPS = "dbt deps"
 
 class SUBCOMMAND(Enum):
     """Supported dbt subcommands."""
-
     SELECT = "--select"
     GENERATE = "generate"
     SERVE = "serve"
-
 
 def dbt_command(
     cmd: COMMAND
@@ -68,37 +70,38 @@ def dbt_run() -> None:
     """Run the dbt models."""
     dbt_command(COMMAND.RUN)
 
-
 def dbt_run_specific() -> None:
     """Run a specific dbt model or selection."""
     node = input("enter node name: ")
     dbt_command(COMMAND.RUN, subcmd={SUBCOMMAND.SELECT: node})
 
-
 def dbt_build() -> None:
     """Run the full dbt build pipeline."""
     dbt_command(COMMAND.BUILD)
-
 
 def dbt_seed() -> None:
     """Load dbt seeds."""
     dbt_command(COMMAND.SEED)
 
-
 def dbt_compile() -> None:
     """Compile the dbt project."""
     dbt_command(COMMAND.COMPILE)
 
+def dbt_parse() -> None:
+    """Run dbt Parse."""
+    dbt_command(COMMAND.PARSE)
+
+def dbt_deps() -> None:
+    """Run dbt deps."""
+    dbt_command(COMMAND.DEPS)
 
 def dbt_docs_generate() -> None:
     """Generate dbt documentation."""
     dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.GENERATE: None})
 
-
 def dbt_docs_view() -> None:
     """Serve dbt documentation locally."""
     dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.SERVE: None})
-
 
 def dbt_test() -> None:
     """Run the dbt tests."""
