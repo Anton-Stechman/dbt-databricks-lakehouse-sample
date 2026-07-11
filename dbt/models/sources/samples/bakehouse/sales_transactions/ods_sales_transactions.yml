@@ -1,0 +1,51 @@
+version: 2
+models:
+- name: ods_sales_transactions
+  description: Curated view for Sales Transactions
+  config:
+    contract:
+      enforced: true
+      alias_types: true
+  columns:
+  - name: transactionid
+    description: Transactionid
+    data_type: LONG
+  - name: customerid
+    description: Customerid
+    data_type: LONG
+  - name: franchiseid
+    description: Franchiseid
+    data_type: LONG
+  - name: datetime
+    description: Datetime
+    data_type: TIMESTAMP
+  - name: product
+    description: Product
+    data_type: STRING
+  - name: quantity
+    description: Quantity
+    data_type: LONG
+  - name: unitprice
+    description: Unitprice
+    data_type: LONG
+  - name: totalprice
+    description: Totalprice
+    data_type: LONG
+  - name: paymentmethod
+    description: Paymentmethod
+    data_type: STRING
+  - name: cardnumber
+    description: Cardnumber
+    data_type: LONG
+  - name: is_current
+    description: '''{{ doc("is_current") }}'''
+    data_type: BOOLEAN
+  - name: is_deleted
+    description: '''{{ doc("is_deleted") }}'''
+    data_type: BOOLEAN
+  - name: effective_from
+    description: '''{{ doc("effective_from") }}'''
+    data_type: TIMESTAMP
+  - name: effective_to
+    description: '''{{ doc("effective_to") }}'''
+    data_type: TIMESTAMP

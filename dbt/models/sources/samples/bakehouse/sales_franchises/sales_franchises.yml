@@ -1,0 +1,38 @@
+version: 2
+sources:
+- name: bakehouse
+  database: samples
+  schema: bakehouse
+  tables:
+  - name: sales_franchises
+    columns:
+    - name: franchiseid
+      description: Franchiseid
+      data_type: LONG
+    - name: name
+      description: Name
+      data_type: STRING
+    - name: city
+      description: City
+      data_type: STRING
+    - name: district
+      description: District
+      data_type: STRING
+    - name: zipcode
+      description: Zipcode
+      data_type: STRING
+    - name: country
+      description: Country
+      data_type: STRING
+    - name: size
+      description: Size
+      data_type: STRING
+    - name: longitude
+      description: Longitude
+      data_type: DOUBLE
+    - name: latitude
+      description: Latitude
+      data_type: DOUBLE
+    - name: supplierid
+      description: Supplierid
+      data_type: LONG

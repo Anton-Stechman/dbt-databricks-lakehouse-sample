@@ -1,0 +1,875 @@
+{
+  "table_catalog": "samples",
+  "schemas": [
+    {
+      "schema_name": "accuweather",
+      "models": [
+        {
+          "model_name": "forecast_daily_calendar_imperial",
+          "columns": [
+            {
+              "name": "city_name",
+              "data_type": "STRING",
+              "ordinal_position": 0
+            },
+            {
+              "name": "country_code",
+              "data_type": "STRING",
+              "ordinal_position": 1
+            },
+            {
+              "name": "latitude",
+              "data_type": "DOUBLE",
+              "ordinal_position": 2
+            },
+            {
+              "name": "longitude",
+              "data_type": "DOUBLE",
+              "ordinal_position": 3
+            },
+            {
+              "name": "date",
+              "data_type": "DATE",
+              "ordinal_position": 4
+            },
+            {
+              "name": "cloud_cover_perc_avg",
+              "data_type": "INT",
+              "ordinal_position": 5
+            },
+            {
+              "name": "cloud_cover_perc_max",
+              "data_type": "INT",
+              "ordinal_position": 6
+            },
+            {
+              "name": "cloud_cover_perc_min",
+              "data_type": "INT",
+              "ordinal_position": 7
+            },
+            {
+              "name": "degree_days_cooling",
+              "data_type": "DOUBLE",
+              "ordinal_position": 8
+            },
+            {
+              "name": "degree_days_freezing",
+              "data_type": "DOUBLE",
+              "ordinal_position": 9
+            },
+            {
+              "name": "degree_days_growing",
+              "data_type": "DOUBLE",
+              "ordinal_position": 10
+            },
+            {
+              "name": "degree_days_heating",
+              "data_type": "DOUBLE",
+              "ordinal_position": 11
+            },
+            {
+              "name": "humidity_relative_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 12
+            },
+            {
+              "name": "humidity_relative_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 13
+            },
+            {
+              "name": "humidity_relative_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 14
+            },
+            {
+              "name": "index_air_quality_24hr_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 15
+            },
+            {
+              "name": "index_uv_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 16
+            },
+            {
+              "name": "index_uv_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 17
+            },
+            {
+              "name": "index_uv_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 18
+            },
+            {
+              "name": "minutes_of_ice_total",
+              "data_type": "INT",
+              "ordinal_position": 19
+            },
+            {
+              "name": "minutes_of_precipitation_total",
+              "data_type": "INT",
+              "ordinal_position": 20
+            },
+            {
+              "name": "minutes_of_sun_total",
+              "data_type": "INT",
+              "ordinal_position": 21
+            },
+            {
+              "name": "minutes_of_rain_total",
+              "data_type": "INT",
+              "ordinal_position": 22
+            },
+            {
+              "name": "minutes_of_snow_total",
+              "data_type": "INT",
+              "ordinal_position": 23
+            },
+            {
+              "name": "has_ice",
+              "data_type": "BOOLEAN",
+              "ordinal_position": 24
+            },
+            {
+              "name": "ice_lwe_rate_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 25
+            },
+            {
+              "name": "ice_lwe_rate_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 26
+            },
+            {
+              "name": "ice_lwe_rate_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 27
+            },
+            {
+              "name": "ice_lwe_total",
+              "data_type": "DOUBLE",
+              "ordinal_position": 28
+            },
+            {
+              "name": "ice_probability",
+              "data_type": "INT",
+              "ordinal_position": 29
+            },
+            {
+              "name": "has_precipitation",
+              "data_type": "BOOLEAN",
+              "ordinal_position": 30
+            },
+            {
+              "name": "precipitation_lwe_rate_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 31
+            },
+            {
+              "name": "precipitation_lwe_rate_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 32
+            },
+            {
+              "name": "precipitation_lwe_rate_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 33
+            },
+            {
+              "name": "precipitation_lwe_total",
+              "data_type": "DOUBLE",
+              "ordinal_position": 34
+            },
+            {
+              "name": "precipitation_probability",
+              "data_type": "INT",
+              "ordinal_position": 35
+            },
+            {
+              "name": "precipitation_type_desc_predominant",
+              "data_type": "STRING",
+              "ordinal_position": 36
+            },
+            {
+              "name": "has_rain",
+              "data_type": "BOOLEAN",
+              "ordinal_position": 37
+            },
+            {
+              "name": "rain_lwe_rate_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 38
+            },
+            {
+              "name": "rain_lwe_rate_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 39
+            },
+            {
+              "name": "rain_lwe_rate_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 40
+            },
+            {
+              "name": "rain_lwe_total",
+              "data_type": "DOUBLE",
+              "ordinal_position": 41
+            },
+            {
+              "name": "rain_probability",
+              "data_type": "INT",
+              "ordinal_position": 42
+            },
+            {
+              "name": "snow_liquid_ratio_accuweather_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 43
+            },
+            {
+              "name": "snow_liquid_ratio_accuweather_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 44
+            },
+            {
+              "name": "snow_liquid_ratio_accuweather_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 45
+            },
+            {
+              "name": "has_snow",
+              "data_type": "BOOLEAN",
+              "ordinal_position": 46
+            },
+            {
+              "name": "snow_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 47
+            },
+            {
+              "name": "snow_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 48
+            },
+            {
+              "name": "snow_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 49
+            },
+            {
+              "name": "snow_total",
+              "data_type": "DOUBLE",
+              "ordinal_position": 50
+            },
+            {
+              "name": "snow_lwe_rate_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 51
+            },
+            {
+              "name": "snow_lwe_rate_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 52
+            },
+            {
+              "name": "snow_lwe_rate_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 53
+            },
+            {
+              "name": "snow_lwe_total",
+              "data_type": "DOUBLE",
+              "ordinal_position": 54
+            },
+            {
+              "name": "snow_probability",
+              "data_type": "INT",
+              "ordinal_position": 55
+            },
+            {
+              "name": "solar_irradiance_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 56
+            },
+            {
+              "name": "solar_irradiance_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 57
+            },
+            {
+              "name": "solar_irradiance_total",
+              "data_type": "DOUBLE",
+              "ordinal_position": 58
+            },
+            {
+              "name": "temperature_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 59
+            },
+            {
+              "name": "temperature_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 60
+            },
+            {
+              "name": "temperature_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 61
+            },
+            {
+              "name": "temperature_dew_point_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 62
+            },
+            {
+              "name": "temperature_dew_point_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 63
+            },
+            {
+              "name": "temperature_dew_point_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 64
+            },
+            {
+              "name": "temperature_heat_index_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 65
+            },
+            {
+              "name": "temperature_heat_index_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 66
+            },
+            {
+              "name": "temperature_heat_index_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 67
+            },
+            {
+              "name": "temperature_realfeel_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 68
+            },
+            {
+              "name": "temperature_realfeel_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 69
+            },
+            {
+              "name": "temperature_realfeel_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 70
+            },
+            {
+              "name": "temperature_realfeel_shade_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 71
+            },
+            {
+              "name": "temperature_realfeel_shade_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 72
+            },
+            {
+              "name": "temperature_realfeel_shade_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 73
+            },
+            {
+              "name": "temperature_wind_chill_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 74
+            },
+            {
+              "name": "temperature_wind_chill_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 75
+            },
+            {
+              "name": "temperature_wind_chill_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 76
+            },
+            {
+              "name": "visibility_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 77
+            },
+            {
+              "name": "visibility_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 78
+            },
+            {
+              "name": "visibility_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 79
+            },
+            {
+              "name": "wind_direction_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 80
+            },
+            {
+              "name": "wind_gust_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 81
+            },
+            {
+              "name": "wind_gust_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 82
+            },
+            {
+              "name": "wind_gust_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 83
+            },
+            {
+              "name": "wind_gust_direction_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 84
+            },
+            {
+              "name": "wind_speed_avg",
+              "data_type": "DOUBLE",
+              "ordinal_position": 85
+            },
+            {
+              "name": "wind_speed_max",
+              "data_type": "DOUBLE",
+              "ordinal_position": 86
+            },
+            {
+              "name": "wind_speed_min",
+              "data_type": "DOUBLE",
+              "ordinal_position": 87
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema_name": "bakehouse",
+      "models": [
+        {
+          "model_name": "sales_customers",
+          "columns": [
+            {
+              "name": "customerID",
+              "data_type": "LONG",
+              "ordinal_position": 0
+            },
+            {
+              "name": "first_name",
+              "data_type": "STRING",
+              "ordinal_position": 1
+            },
+            {
+              "name": "last_name",
+              "data_type": "STRING",
+              "ordinal_position": 2
+            },
+            {
+              "name": "email_address",
+              "data_type": "STRING",
+              "ordinal_position": 3
+            },
+            {
+              "name": "phone_number",
+              "data_type": "STRING",
+              "ordinal_position": 4
+            },
+            {
+              "name": "address",
+              "data_type": "STRING",
+              "ordinal_position": 5
+            },
+            {
+              "name": "city",
+              "data_type": "STRING",
+              "ordinal_position": 6
+            },
+            {
+              "name": "state",
+              "data_type": "STRING",
+              "ordinal_position": 7
+            },
+            {
+              "name": "country",
+              "data_type": "STRING",
+              "ordinal_position": 8
+            },
+            {
+              "name": "continent",
+              "data_type": "STRING",
+              "ordinal_position": 9
+            },
+            {
+              "name": "postal_zip_code",
+              "data_type": "LONG",
+              "ordinal_position": 10
+            },
+            {
+              "name": "gender",
+              "data_type": "STRING",
+              "ordinal_position": 11
+            }
+          ]
+        },
+        {
+          "model_name": "media_gold_reviews_chunked",
+          "columns": [
+            {
+              "name": "franchiseID",
+              "data_type": "INT",
+              "ordinal_position": 0
+            },
+            {
+              "name": "review_date",
+              "data_type": "TIMESTAMP",
+              "ordinal_position": 1
+            },
+            {
+              "name": "chunked_text",
+              "data_type": "STRING",
+              "ordinal_position": 2
+            },
+            {
+              "name": "chunk_id",
+              "data_type": "STRING",
+              "ordinal_position": 3
+            },
+            {
+              "name": "review_uri",
+              "data_type": "STRING",
+              "ordinal_position": 4
+            }
+          ]
+        },
+        {
+          "model_name": "media_customer_reviews",
+          "columns": [
+            {
+              "name": "review",
+              "data_type": "STRING",
+              "ordinal_position": 0
+            },
+            {
+              "name": "franchiseID",
+              "data_type": "LONG",
+              "ordinal_position": 1
+            },
+            {
+              "name": "review_date",
+              "data_type": "TIMESTAMP",
+              "ordinal_position": 2
+            },
+            {
+              "name": "new_id",
+              "data_type": "INT",
+              "ordinal_position": 3
+            }
+          ]
+        },
+        {
+          "model_name": "sales_suppliers",
+          "columns": [
+            {
+              "name": "supplierID",
+              "data_type": "LONG",
+              "ordinal_position": 0
+            },
+            {
+              "name": "name",
+              "data_type": "STRING",
+              "ordinal_position": 1
+            },
+            {
+              "name": "ingredient",
+              "data_type": "STRING",
+              "ordinal_position": 2
+            },
+            {
+              "name": "continent",
+              "data_type": "STRING",
+              "ordinal_position": 3
+            },
+            {
+              "name": "city",
+              "data_type": "STRING",
+              "ordinal_position": 4
+            },
+            {
+              "name": "district",
+              "data_type": "STRING",
+              "ordinal_position": 5
+            },
+            {
+              "name": "size",
+              "data_type": "STRING",
+              "ordinal_position": 6
+            },
+            {
+              "name": "longitude",
+              "data_type": "DOUBLE",
+              "ordinal_position": 7
+            },
+            {
+              "name": "latitude",
+              "data_type": "DOUBLE",
+              "ordinal_position": 8
+            },
+            {
+              "name": "approved",
+              "data_type": "STRING",
+              "ordinal_position": 9
+            }
+          ]
+        },
+        {
+          "model_name": "sales_franchises",
+          "columns": [
+            {
+              "name": "franchiseID",
+              "data_type": "LONG",
+              "ordinal_position": 0
+            },
+            {
+              "name": "name",
+              "data_type": "STRING",
+              "ordinal_position": 1
+            },
+            {
+              "name": "city",
+              "data_type": "STRING",
+              "ordinal_position": 2
+            },
+            {
+              "name": "district",
+              "data_type": "STRING",
+              "ordinal_position": 3
+            },
+            {
+              "name": "zipcode",
+              "data_type": "STRING",
+              "ordinal_position": 4
+            },
+            {
+              "name": "country",
+              "data_type": "STRING",
+              "ordinal_position": 5
+            },
+            {
+              "name": "size",
+              "data_type": "STRING",
+              "ordinal_position": 6
+            },
+            {
+              "name": "longitude",
+              "data_type": "DOUBLE",
+              "ordinal_position": 7
+            },
+            {
+              "name": "latitude",
+              "data_type": "DOUBLE",
+              "ordinal_position": 8
+            },
+            {
+              "name": "supplierID",
+              "data_type": "LONG",
+              "ordinal_position": 9
+            }
+          ]
+        },
+        {
+          "model_name": "sales_transactions",
+          "columns": [
+            {
+              "name": "transactionID",
+              "data_type": "LONG",
+              "ordinal_position": 0
+            },
+            {
+              "name": "customerID",
+              "data_type": "LONG",
+              "ordinal_position": 1
+            },
+            {
+              "name": "franchiseID",
+              "data_type": "LONG",
+              "ordinal_position": 2
+            },
+            {
+              "name": "dateTime",
+              "data_type": "TIMESTAMP",
+              "ordinal_position": 3
+            },
+            {
+              "name": "product",
+              "data_type": "STRING",
+              "ordinal_position": 4
+            },
+            {
+              "name": "quantity",
+              "data_type": "LONG",
+              "ordinal_position": 5
+            },
+            {
+              "name": "unitPrice",
+              "data_type": "LONG",
+              "ordinal_position": 6
+            },
+            {
+              "name": "totalPrice",
+              "data_type": "LONG",
+              "ordinal_position": 7
+            },
+            {
+              "name": "paymentMethod",
+              "data_type": "STRING",
+              "ordinal_position": 8
+            },
+            {
+              "name": "cardNumber",
+              "data_type": "LONG",
+              "ordinal_position": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema_name": "tpch",
+      "models": [
+        {
+          "model_name": "lineitem",
+          "columns": [
+            {
+              "name": "l_orderkey",
+              "data_type": "LONG",
+              "ordinal_position": 0
+            },
+            {
+              "name": "l_partkey",
+              "data_type": "LONG",
+              "ordinal_position": 1
+            },
+            {
+              "name": "l_suppkey",
+              "data_type": "LONG",
+              "ordinal_position": 2
+            },
+            {
+              "name": "l_linenumber",
+              "data_type": "INT",
+              "ordinal_position": 3
+            },
+            {
+              "name": "l_quantity",
+              "data_type": "DECIMAL",
+              "ordinal_position": 4
+            },
+            {
+              "name": "l_extendedprice",
+              "data_type": "DECIMAL",
+              "ordinal_position": 5
+            },
+            {
+              "name": "l_discount",
+              "data_type": "DECIMAL",
+              "ordinal_position": 6
+            },
+            {
+              "name": "l_tax",
+              "data_type": "DECIMAL",
+              "ordinal_position": 7
+            },
+            {
+              "name": "l_returnflag",
+              "data_type": "STRING",
+              "ordinal_position": 8
+            },
+            {
+              "name": "l_linestatus",
+              "data_type": "STRING",
+              "ordinal_position": 9
+            },
+            {
+              "name": "l_shipdate",
+              "data_type": "DATE",
+              "ordinal_position": 10
+            },
+            {
+              "name": "l_commitdate",
+              "data_type": "DATE",
+              "ordinal_position": 11
+            },
+            {
+              "name": "l_receiptdate",
+              "data_type": "DATE",
+              "ordinal_position": 12
+            },
+            {
+              "name": "l_shipinstruct",
+              "data_type": "STRING",
+              "ordinal_position": 13
+            },
+            {
+              "name": "l_shipmode",
+              "data_type": "STRING",
+              "ordinal_position": 14
+            },
+            {
+              "name": "l_comment",
+              "data_type": "STRING",
+              "ordinal_position": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "schema_name": "wanderbricks",
+      "models": [
+        {
+          "model_name": "payments",
+          "columns": [
+            {
+              "name": "payment_id",
+              "data_type": "LONG",
+              "ordinal_position": 0
+            },
+            {
+              "name": "booking_id",
+              "data_type": "LONG",
+              "ordinal_position": 1
+            },
+            {
+              "name": "amount",
+              "data_type": "DECIMAL",
+              "ordinal_position": 2
+            },
+            {
+              "name": "payment_method",
+              "data_type": "STRING",
+              "ordinal_position": 3
+            },
+            {
+              "name": "status",
+              "data_type": "STRING",
+              "ordinal_position": 4
+            },
+            {
+              "name": "payment_date",
+              "data_type": "TIMESTAMP",
+              "ordinal_position": 5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+version: 2
+sources:
+- name: bakehouse
+  database: samples
+  schema: bakehouse
+  tables:
+  - name: media_gold_reviews_chunked
+    columns:
+    - name: franchiseid
+      description: Franchiseid
+      data_type: INT
+    - name: review_date
+      description: Review Date
+      data_type: TIMESTAMP
+    - name: chunked_text
+      description: Chunked Text
+      data_type: STRING
+    - name: chunk_id
+      description: Chunk Id
+      data_type: STRING
+    - name: review_uri
+      description: Review Uri
+      data_type: STRING

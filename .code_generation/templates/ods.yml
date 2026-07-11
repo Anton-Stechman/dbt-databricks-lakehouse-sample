@@ -1,0 +1,13 @@
+version: 2
+models:
+  - name: ods_{name}
+    description: Curated view for {description}
+    config:
+      contract:
+        enforced: true
+        alias_types: true
+    config:
+      contract:
+        enforced: true
+        alias_types: true
+    columns: null

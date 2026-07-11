@@ -1,0 +1,20 @@
+version: 2
+sources:
+- name: bakehouse
+  database: samples
+  schema: bakehouse
+  tables:
+  - name: media_customer_reviews
+    columns:
+    - name: review
+      description: Review
+      data_type: STRING
+    - name: franchiseid
+      description: Franchiseid
+      data_type: LONG
+    - name: review_date
+      description: Review Date
+      data_type: TIMESTAMP
+    - name: new_id
+      description: New Id
+      data_type: INT

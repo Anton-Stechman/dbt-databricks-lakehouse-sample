@@ -1,0 +1,8 @@
+version: 2
+sources:
+  - name: null
+    database: null
+    schema: null
+    tables:
+      - name: null
+        columns: null

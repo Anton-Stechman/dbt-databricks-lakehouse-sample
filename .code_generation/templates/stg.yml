@@ -1,0 +1,9 @@
+version: 2
+models:
+  - name: stg_{name}
+    description: Staging view for {description}
+    config:
+      contract:
+        enforced: true
+        alias_types: true
+    columns: null

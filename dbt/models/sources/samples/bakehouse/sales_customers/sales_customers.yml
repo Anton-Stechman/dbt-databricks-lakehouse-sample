@@ -1,0 +1,44 @@
+version: 2
+sources:
+- name: bakehouse
+  database: samples
+  schema: bakehouse
+  tables:
+  - name: sales_customers
+    columns:
+    - name: customerid
+      description: Customerid
+      data_type: LONG
+    - name: first_name
+      description: First Name
+      data_type: STRING
+    - name: last_name
+      description: Last Name
+      data_type: STRING
+    - name: email_address
+      description: Email Address
+      data_type: STRING
+    - name: phone_number
+      description: Phone Number
+      data_type: STRING
+    - name: address
+      description: Address
+      data_type: STRING
+    - name: city
+      description: City
+      data_type: STRING
+    - name: state
+      description: State
+      data_type: STRING
+    - name: country
+      description: Country
+      data_type: STRING
+    - name: continent
+      description: Continent
+      data_type: STRING
+    - name: postal_zip_code
+      description: Postal Zip Code
+      data_type: LONG
+    - name: gender
+      description: Gender
+      data_type: STRING
