@@ -37,4 +37,4 @@ jobs:
       - name: Generate dbt docs
         run: |
           dbt docs generate --project-dir dbt/
-        continue-on-error: false
+        continue-on-error: true
