@@ -15,7 +15,7 @@ authors = [
 dependencies = [
     "dbt-core"
     , "dbt-databricks"
-    , "PYYaml
+    , "PyYAML"
 ]
 
 [project.scripts]
