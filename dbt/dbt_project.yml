@@ -39,3 +39,7 @@ models:
       +materialized: table
       +schema: marts
       +file_format: delta
+
+seeds:
+  databricks_lakehouse_sample:
+    +schema: seeds
