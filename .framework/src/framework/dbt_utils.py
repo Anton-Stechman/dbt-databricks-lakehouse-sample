@@ -8,6 +8,7 @@ from .utils import (
     file_exists
     , dir_exists
     , concatenate
+    , menu_header
 )
 
 class COMMAND(Enum):
@@ -24,7 +25,10 @@ class SUBCOMMAND(Enum):
 
 def dbt_command(cmd: COMMAND, profiles_dir: str = ".locals", project_dir: str = "dbt", subcmd: dict[SUBCOMMAND, str] = None):
     """
+    Run a dbt command using the COMMAND and SUBCOMMAND enum classes
     """
+    subprocess.run("cls", shell=True)
+    menu_header(cmd.value)
     # Validate required directories and files exist
     _ = dir_exists(profiles_dir, autocreate=False, on_fail="raise")
     _ = dir_exists(project_dir, autocreate=False, on_fail="raise")
@@ -36,6 +40,6 @@ def dbt_command(cmd: COMMAND, profiles_dir: str = ".locals", project_dir: str = 
         for key, val in subcmd.items():
             if not isinstance(key, SUBCOMMAND):
                 raise TypeError(f"Expected type {SUBCOMMAND} got {type(key)} for {key}")
-            subcommands.append(concatenate(key, val))
+            subcommands.append(concatenate(key.value, val))
         command: str = concatenate(command, *subcommands)
-    subprocess.run([command])
+    subprocess.run(command, shell=True, check=True)

@@ -11,11 +11,13 @@ from .dbt_utils import (
 
 def main_menu():
     """main menu - no protection added, intrended to break on invalid input"""
-    subprocess.run(["cls"])
+    subprocess.run("cls", shell=True)
     menu_header("Databricks dbt Sample Project")
     items: list[str] = list(MENU_ITEMS.keys())
     response: int = menu_items(*items)
     while response != 0:
+        if response == 0:
+            break
         item = response -1
         option = items[item]
         action = MENU_ITEMS[option]
