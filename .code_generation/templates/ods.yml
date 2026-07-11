@@ -1,0 +1,21 @@
+models:
+  - name: ods_{name}
+    description: Curated view for {description}
+    config:
+      contract:
+        enforced: true
+        alias_types: true
+    columns:
+      {columns}
+      - name: is_current
+        description: "{{ doc('is_current') }}"
+        data_type: BOOLEAN
+      - name: is_deleted
+        description: "{{ doc('is_deleted') }}"
+        data_type: BOOLEAN
+      - name: effective_from
+        description: "{{ doc('effective_from') }}"
+        data_type: DATE
+      - name: effective_to
+        description: "{{ doc('effective_to') }}"
+        data_type: DATE
