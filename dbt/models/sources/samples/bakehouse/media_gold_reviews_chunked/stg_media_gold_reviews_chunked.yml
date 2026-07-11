@@ -3,6 +3,7 @@ models:
 - name: stg_media_gold_reviews_chunked
   description: Staging view for Media Gold Reviews Chunked
   config:
+    materialized: ephemeral
     contract:
       enforced: true
       alias_types: true
