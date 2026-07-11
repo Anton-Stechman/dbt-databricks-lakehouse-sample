@@ -1,15 +1,14 @@
-name: dbt-ci-build
+name: dbt Release
 on:
   push:
-    branches-ignore:
-      - main
+    branches:
       - prod
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     env:
-      TARGET: ci
+      TARGET: prod
       DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
       DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
       DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}
@@ -30,16 +29,6 @@ jobs:
           pip install -r dbt/dbt-deps.txt
         continue-on-error: false
 
-      - name: Lint with sqlfluff
-        run: |
-          sqlfluff lint --dialect databricks dbt/
-        continue-on-error: false
-
-      - name: dbt parse
-        run: |
-          dbt parse --project-dir dbt/ --profiles-dir dbt/
-        continue-on-error: false
-
       - name: dbt Seed
         run: |
           dbt seed --project-dir dbt/ --profiles-dir dbt/
@@ -48,19 +37,4 @@ jobs:
       - name: dbt Run
         run: |
           dbt run --project-dir dbt/ --profiles-dir dbt/
-        continue-on-error: false
-
-      - name: dbt Test
-        run: |
-          dbt test --project-dir dbt/ --profiles-dir dbt/
-        continue-on-error: false
-
-      - name: Clean up CI schema
-        if: always()
-        run: |
-          dbt run-operation drop_schema --project-dir dbt/ --profiles-dir dbt/ --args '{schema: ci}'
-
-      - name: Generate dbt docs
-        run: |
-          dbt docs generate --project-dir dbt/ --profiles-dir dbt/
         continue-on-error: false
