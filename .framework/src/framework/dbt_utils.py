@@ -40,7 +40,7 @@ def dbt_command(
     _ = dir_exists(project_dir, autocreate=False, on_fail="raise")
     _ = file_exists(profiles_dir, "profiles.yml", on_fail="raise")
 
-    cmd_hooks = concatenate("--project-dir", project_dir, "--profiles-dir", profiles_dir)
+    cmd_hooks = concatenate("--project-dir", project_dir, "--profiles-dir", profiles_dir, "--target dev")
     command = cmd.value
     subcommands = []
     if subcmd:

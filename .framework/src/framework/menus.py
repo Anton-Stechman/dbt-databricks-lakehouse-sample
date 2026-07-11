@@ -1,8 +1,11 @@
 """Contains all menus used by the framework."""
-
-from typing import Any
+# builtins
 import subprocess
+from typing import Any
+from collections.abc import Callable
 
+# Framework imports
+from .utils import menu_header, menu_items
 from .code_gen import (
     get_list_schemas
     , get_list_models
@@ -18,10 +21,8 @@ from .dbt_utils import (
     , dbt_seed
     , dbt_test
 )
-from .utils import menu_header, menu_items
 
-
-DBT_MENU_ITEMS: dict[str, Any] = {
+DBT_MENU_ITEMS: dict[str, Callable | None] = {
     "exit": None
     , "dbt-run": dbt_run
     , "dbt-run-specific": dbt_run_specific
@@ -47,10 +48,10 @@ def dbt_menu() -> None:
             input("press enter to try again... ")
         except (EOFError, OSError):
             print("No input available; returning to the menu.")
-        return None
+        return main_menu(dbt_menu)
 
     if response == 0:
-        return None
+        return main_menu()
 
     try:
         option = items[response - 1]
@@ -60,8 +61,9 @@ def dbt_menu() -> None:
 
     action = DBT_MENU_ITEMS[option]
     if action is None:
-        return None
+        main_menu(dbt_menu)
     action()
+    main_menu(dbt_menu)
 
 def create_model() -> None:
     """Display the create-model menu"""
@@ -80,7 +82,7 @@ def create_model() -> None:
                 print("No input available; returning to the main menu.")
                 return None
         if response == 0:
-            return None
+            main_menu()
 
         try:
             option = schemas[response - 1]
@@ -104,7 +106,7 @@ def create_model() -> None:
                 print("No input available; returning to the main menu.")
                 return None
         if response == 0:
-            return None
+            main_menu(create_model)
 
         try:
             option = models[response - 1]
@@ -115,32 +117,36 @@ def create_model() -> None:
 
     _schema: str = sel_schema()
     if not _schema:
-        return None
+        main_menu(create_model)
 
     _model: str = sel_model(_schema)
     if not _model:
-        return None
+        main_menu(create_model)
 
     if str(input(f"create model {_model}? [y/n] ")) == "y":
         generate_selected_model(_model)
-    return None
+        print(f"\nmodel {_model} created")
+        input("press enter to continue...")
+    main_menu(create_model)
 
 def sqlfluff() -> None:
     """fluff dbt project"""
     subprocess.run("cls", shell=True, check=False)
     menu_header("SqlFluff")
     subprocess.run("sqlfluff lint --dialect databricks dbt/", shell=True, check=False)
-    input("press enter to continue... ")
+    input("press enter to return to the main menu... ")
 
-MAIN_MENU_ITEMS: dict[str, Any] = {
+MAIN_MENU_ITEMS: dict[str, Callable | None] = {
     "exit": None
     , "dbt": dbt_menu
     , "create-models": create_model
     , "lint": sqlfluff
 }
 
-def main_menu() -> None:
+def main_menu(bypass: Callable | None = None) -> None:
     """Display the main menu and dispatch the selected action."""
+    if bypass:
+        bypass()
     while True:
         try:
             subprocess.run("cls", shell=True, check=False)
@@ -157,7 +163,7 @@ def main_menu() -> None:
                     print("No input available; returning to the menu.")
                 continue
             if response == 0:
-                break
+                raise KeyboardInterrupt("exit with input 0")
 
             try:
                 option = items[response - 1]
@@ -170,12 +176,21 @@ def main_menu() -> None:
                 return None
             action()
 
-        except KeyboardInterrupt as exc:
+        except KeyboardInterrupt as ex:
             print("\nExiting menu...")
-            raise SystemExit(0) from exc
-        except KeyError:
-            print("Invalid selection")
-            continue
+            raise SystemExit(0) from ex
+        except KeyError as ex:
+            print(f"Invalid selection: {ex}")
+            input("press enter to coontinue...")
+            main_menu()
+        except TypeError as ex:
+            print(f"Invalid selection: {ex}")
+            input("press enter to coontinue...")
+            main_menu()
+        except ValueError as ex:
+            print(f"Invalid selection: {ex}")
+            input("press enter to coontinue...")
+            main_menu()
         except Exception as ex:
-            print(f"An exception occurred: {ex}")
+            print(f"{ex.__class__.__name__}: {ex}")
             raise SystemExit(0) from ex

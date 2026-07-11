@@ -38,30 +38,30 @@ jobs:
 
       - name: dbt parse
         run: |
-          dbt parse --project-dir dbt/ --profiles-dir dbt/
+          dbt parse --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
         continue-on-error: false
 
       - name: dbt Seed
         run: |
-          dbt seed --project-dir dbt/ --profiles-dir dbt/
+          dbt seed --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
         continue-on-error: false
 
       - name: dbt Run
         run: |
-          dbt run --project-dir dbt/ --profiles-dir dbt/
+          dbt run --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
         continue-on-error: false
 
       - name: dbt Test
         run: |
-          dbt test --project-dir dbt/ --profiles-dir dbt/
+          dbt test --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
         continue-on-error: false
 
       - name: Clean up CI schema
         if: always()
         run: |
-          dbt run-operation drop_schema --project-dir dbt/ --profiles-dir dbt/ --args '{schema: ci}'
+          dbt run-operation drop_schema --project-dir dbt/ --profiles-dir dbt/ --args '{schema: ci}' --target ${{ env.TARGET }}
 
       - name: Generate dbt docs
         run: |
-          dbt docs generate --project-dir dbt/ --profiles-dir dbt/
+          dbt docs generate --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
         continue-on-error: false

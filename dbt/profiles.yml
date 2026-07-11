@@ -4,8 +4,8 @@ databricks_lakehouse_sample:
 
     ci:
       type: databricks
-      catalog: workspace # or your Unity Catalog name, e.g. main
-      schema: ci
+      catalog: ci # or your Unity Catalog name, e.g. main
+      schema: default
       host: "{{ env_var('DBT_DATABRICKS_HOST') }}"
       http_path: "{{ env_var('DBT_DATABRICKS_HTTP_PATH') }}"
       token: "{{ env_var('DBT_DATABRICKS_TOKEN') }}"
@@ -13,8 +13,17 @@ databricks_lakehouse_sample:
 
     prod:
       type: databricks
-      catalog: workspace # or your Unity Catalog name, e.g. main
-      schema: project_prod
+      catalog: prod # or your Unity Catalog name, e.g. main
+      schema: default
+      host: "{{ env_var('DBT_DATABRICKS_HOST') }}"
+      http_path: "{{ env_var('DBT_DATABRICKS_HTTP_PATH') }}"
+      token: "{{ env_var('DBT_DATABRICKS_TOKEN') }}"
+      threads: 4
+
+    test:
+      type: databricks
+      catalog: test # or your Unity Catalog name, e.g. main
+      schema: default
       host: "{{ env_var('DBT_DATABRICKS_HOST') }}"
       http_path: "{{ env_var('DBT_DATABRICKS_HTTP_PATH') }}"
       token: "{{ env_var('DBT_DATABRICKS_TOKEN') }}"

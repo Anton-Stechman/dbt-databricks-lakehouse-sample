@@ -3,12 +3,13 @@ on:
   push:
     branches:
       - prod
+      - test
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     env:
-      TARGET: prod
+      TARGET: ${{ github.ref == 'refs/heads/prod' && 'prod' || 'test' }}
       DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
       DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
       DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}
@@ -31,10 +32,10 @@ jobs:
 
       - name: dbt Seed
         run: |
-          dbt seed --project-dir dbt/ --profiles-dir dbt/
+          dbt seed --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
         continue-on-error: false
 
       - name: dbt Run
         run: |
-          dbt run --project-dir dbt/ --profiles-dir dbt/
+          dbt run --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
         continue-on-error: false
