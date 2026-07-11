@@ -4,9 +4,6 @@ on:
     branches-ignore:
       - main
       - prod
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-test:
