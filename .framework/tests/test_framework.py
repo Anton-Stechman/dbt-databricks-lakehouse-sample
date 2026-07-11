@@ -187,14 +187,16 @@ def test_main_menu_raises_system_exit_on_keyboard_interrupt(monkeypatch):
 
 def test_menu_items_map_to_expected_callables():
     expected = {
-        "dbt-run": dbt_utils.dbt_run,
-        "dbt-run-specific": dbt_utils.dbt_run_specific,
-        "dbt-run-full": dbt_utils.dbt_build,
-        "dbt-seed": dbt_utils.dbt_seed,
-        "dbt-compile": dbt_utils.dbt_compile,
-        "dbt-docs-generate": dbt_utils.dbt_docs_generate,
-        "dbt-docs-view": dbt_utils.dbt_docs_view,
-        "dbt-test": dbt_utils.dbt_test
+        "run": dbt_utils.dbt_run
+        , "run specific": dbt_utils.dbt_run_specific
+        , "test": dbt_utils.dbt_test
+        , "build": dbt_utils.dbt_build
+        , "seed": dbt_utils.dbt_seed
+        , "deps": dbt_utils.dbt_deps
+        , "parse": dbt_utils.dbt_parse
+        , "compile": dbt_utils.dbt_compile
+        , "generate docs": dbt_utils.dbt_docs_generate
+        , "view docs": dbt_utils.dbt_docs_view
     }
 
     assert menus.DBT_MENU_ITEMS == {**{"exit": None}, **expected}
