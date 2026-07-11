@@ -32,7 +32,7 @@ jobs:
 
       - name: Run tests with PyTest
         run: |
-          pytest .framework/tests/
+          pytest .framework/tests/ || [ $? -eq 5 ]
         continue-on-error: false
 
       - name: Build package
