@@ -4,7 +4,7 @@ Simple Data Lakehouse implementation using Databricks and DBT
 ___
 
 The purposee of this project is to implement a simple dbt framework and data lakehouse in Databricks.
-This project was built in the space of about 7 hours with no prior expeereience or useage with databricks.
+This project was built in the space of one day with no prior experience or usage with databricks.
 
 # Project Requirements
 - `python>=3.13, <3.14`
@@ -29,6 +29,14 @@ to run the framework use the below command in a terminal
 ```powerrshell
 menu run
 ```
+
+### Framework features:
+- full dbt menu
+  handles dbt cli commands making local-dev deployments easier
+- create models menu
+  generates source models from metadata.
+- lint
+  runs sqlfluff over the dbt codebase
 
 ## Workflows
 This repository includes four GitHub Actions workflows that cover CI validation, dbt execution, docs publishing, and framework testing:
