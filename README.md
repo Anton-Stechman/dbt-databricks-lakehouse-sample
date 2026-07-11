@@ -49,3 +49,42 @@ This repository includes four GitHub Actions workflows that cover CI validation,
 
 # dbt docs
 dbt docs for this project are now available at [dbt-docs](https://anton-stechman.github.io/dbt-databricks-lakehouse-sample/)
+
+## ⚠️ Project Status & Limitations
+
+**This project was built in a single day as a portfolio/learning project.** While it demonstrates production-grade patterns and DevOps practices, there are intentional tradeoffs made for speed:
+
+**Known Limitations:**
+- Code duplication in framework utilities (would benefit from refactoring into a full class-driven architecture)
+- Some cross-over between modules that could be consolidated
+- Limited error handling/edge cases
+- Documentation could be more comprehensive
+
+**This is intentional.** The goal was to demonstrate:
+- How to architect a lakehouse implementation
+- DevOps/CI patterns on Databricks
+- Meta-programming concepts (source generation from metadata)
+- Rapid learning and shipping on new platforms
+
+**This is NOT:**
+- Production-hardened
+- Optimized for scale
+- Fully tested across all edge cases
+
+**This IS:**
+- A solid foundation for learning
+- A reference implementation of dbt + Databricks patterns
+- A starting point for your own framework
+
+---
+
+## 🤝 Contributing
+
+This project is open source. **Contributions welcome.** Areas that would benefit:
+
+- Refactoring framework utilities into proper class architecture
+- Additional error handling
+- Expanded test coverage
+- Documentation improvements
+- Performance optimizations
+
