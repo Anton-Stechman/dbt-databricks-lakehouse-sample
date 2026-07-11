@@ -36,6 +36,11 @@ jobs:
           sqlfluff lint --dialect databricks dbt/
         continue-on-error: false
 
+      - name: dbt Deps
+        run: |
+          dbt deps --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
+        continue-on-error: false
+
       - name: dbt parse
         run: |
           dbt parse --project-dir dbt/ --profiles-dir dbt/ --target ${{ env.TARGET }}
