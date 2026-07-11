@@ -1,4 +1,4 @@
-name: dbt-ci-build
+name: dbt Release
 on:
   push:
     branches:

@@ -24,3 +24,11 @@ to run the framework use the below command in a terminal
 ```powerrshell
 menu run
 ```
+
+## Workflows
+This repository includes four GitHub Actions workflows that cover CI validation, dbt execution, docs publishing, and framework testing:
+
+- `dbt-ci-build.yml` - Runs the dbt validation pipeline for non-main branches, including dependency installation, SQL linting, dbt parse, seed, run, test, schema cleanup, and docs generation.
+- `dbt-docs-release.yml` - Publishes generated dbt documentation to GitHub Pages when changes land on the `prod` branch.
+- `dbt-release.yml` - Executes the production dbt release flow on `prod`, including seed and run steps for the target environment.
+- `framework-ci-build.yml` - Validates the framework package with pylint, pytest, and a build step for non-main branches.
