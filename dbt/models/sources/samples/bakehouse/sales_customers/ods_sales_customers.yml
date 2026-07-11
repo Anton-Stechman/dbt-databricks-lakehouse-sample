@@ -7,7 +7,7 @@ models:
       enforced: true
       alias_types: true
   columns:
-  - name: customerID
+  - name: customerid
     description: Customerid
     data_type: LONG
   - name: first_name

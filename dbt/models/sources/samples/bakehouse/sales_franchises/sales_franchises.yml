@@ -6,7 +6,7 @@ sources:
   tables:
   - name: sales_franchises
     columns:
-    - name: franchiseID
+    - name: franchiseid
       description: Franchiseid
       data_type: LONG
     - name: name
@@ -33,6 +33,6 @@ sources:
     - name: latitude
       description: Latitude
       data_type: DOUBLE
-    - name: supplierID
+    - name: supplierid
       description: Supplierid
       data_type: LONG

@@ -7,7 +7,7 @@ models:
       enforced: true
       alias_types: true
   columns:
-  - name: supplierID
+  - name: supplierid
     description: Supplierid
     data_type: LONG
   - name: name

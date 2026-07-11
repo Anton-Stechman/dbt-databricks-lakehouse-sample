@@ -9,7 +9,7 @@ sources:
     - name: review
       description: Review
       data_type: STRING
-    - name: franchiseID
+    - name: franchiseid
       description: Franchiseid
       data_type: LONG
     - name: review_date

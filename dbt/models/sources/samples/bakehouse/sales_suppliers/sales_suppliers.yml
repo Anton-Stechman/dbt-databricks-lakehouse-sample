@@ -6,7 +6,7 @@ sources:
   tables:
   - name: sales_suppliers
     columns:
-    - name: supplierID
+    - name: supplierid
       description: Supplierid
       data_type: LONG
     - name: name

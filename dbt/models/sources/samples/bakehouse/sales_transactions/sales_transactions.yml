@@ -6,16 +6,16 @@ sources:
   tables:
   - name: sales_transactions
     columns:
-    - name: transactionID
+    - name: transactionid
       description: Transactionid
       data_type: LONG
-    - name: customerID
+    - name: customerid
       description: Customerid
       data_type: LONG
-    - name: franchiseID
+    - name: franchiseid
       description: Franchiseid
       data_type: LONG
-    - name: dateTime
+    - name: datetime
       description: Datetime
       data_type: TIMESTAMP
     - name: product
@@ -24,15 +24,15 @@ sources:
     - name: quantity
       description: Quantity
       data_type: LONG
-    - name: unitPrice
+    - name: unitprice
       description: Unitprice
       data_type: LONG
-    - name: totalPrice
+    - name: totalprice
       description: Totalprice
       data_type: LONG
-    - name: paymentMethod
+    - name: paymentmethod
       description: Paymentmethod
       data_type: STRING
-    - name: cardNumber
+    - name: cardnumber
       description: Cardnumber
       data_type: LONG

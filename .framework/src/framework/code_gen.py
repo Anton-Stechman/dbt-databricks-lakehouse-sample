@@ -68,7 +68,7 @@ def get_model_schema(model_name: str, meta: dict | None = None) -> str:
                 continue
             if model_name == model["model_name"]:
                 return schema_name
-    raise Exception(f"Cannot find schema for model {model_name}")
+    raise FileNotFoundError(f"Cannot find schema for model {model_name}")
 
 def get_model_data(model_name: str, meta: dict | None = None) -> dict:
     """Get model metadata by name"""
@@ -81,7 +81,7 @@ def get_model_data(model_name: str, meta: dict | None = None) -> dict:
                 continue
             if model_name == model["model_name"]:
                 return model
-    raise Exception(f"Cannot find data for model {model_name}")
+    raise FileNotFoundError(f"Cannot find data for model {model_name}")
 
 def get_template(name: str, ftype: Literal["yml", "sql"] = "yml", replace: dict | None = None) -> str | dict:
     """Get a template sql or yaml file"""
@@ -109,7 +109,7 @@ def generate_selected_model(model_name: str, meta: dict | None = None) -> bool:
             if not isinstance(col, dict):
                 continue
             columns.append({
-                "name": col["name"]
+                "name": str(col["name"]).lower()
                 , "description": proper(col["name"])
                 , "data_type": col["data_type"]}
             )
@@ -161,7 +161,11 @@ def generate_selected_model(model_name: str, meta: dict | None = None) -> bool:
         stgfile.write(safe_dump(stg, sort_keys=False))
 
     # Generate stg file
-    stgsql: str = get_template("stg", ftype="sql", replace={"name": model_name, "cte-columns": cte_columns, "columns": final_columns, "schema": schema})
+    stgsql: str = get_template(
+        "stg"
+        , ftype="sql"
+        , replace={"name": model_name, "cte-columns": cte_columns, "columns": final_columns, "schema": schema}
+    )
     stgsqlname: str = f"stg_{model_name}.sql"
     stg_fpath: str = os.path.join(output_dir, stgsqlname)
     with open(stg_fpath, "w", encoding="utf-8") as stgfile:
@@ -185,4 +189,5 @@ def generate_selected_model(model_name: str, meta: dict | None = None) -> bool:
     return True
 
 if __name__== "__main__":
-    print(generate_selected_model("sales_customers"))
+    for m in get_list_models(target_schema="bakehouse"):
+        print(generate_selected_model(m))

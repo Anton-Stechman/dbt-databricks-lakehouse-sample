@@ -7,7 +7,7 @@ models:
       enforced: true
       alias_types: true
   columns:
-  - name: franchiseID
+  - name: franchiseid
     description: Franchiseid
     data_type: LONG
   - name: name
@@ -34,7 +34,7 @@ models:
   - name: latitude
     description: Latitude
     data_type: DOUBLE
-  - name: supplierID
+  - name: supplierid
     description: Supplierid
     data_type: LONG
   - name: is_current

@@ -7,7 +7,7 @@ models:
       enforced: true
       alias_types: true
   columns:
-  - name: franchiseID
+  - name: franchiseid
     description: Franchiseid
     data_type: INT
   - name: review_date

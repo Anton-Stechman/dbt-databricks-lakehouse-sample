@@ -1,0 +1,9 @@
+[FORMAT]
+max-line-length = 150
+
+[DESIGN]
+max-locals = 35
+max-statements = 60
+
+[MESSAGES CONTROL]
+disable = inconsistent-return-statements
