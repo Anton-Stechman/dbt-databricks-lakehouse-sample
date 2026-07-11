@@ -37,3 +37,7 @@ This repository includes four GitHub Actions workflows that cover CI validation,
 - `dbt-docs-release.yml` - Publishes generated dbt documentation to GitHub Pages when changes land on the `prod` branch.
 - `dbt-release.yml` - Executes the production dbt release flow on `prod`, including seed and run steps for the target environment.
 - `framework-ci-build.yml` - Validates the framework package with pylint, pytest, and a build step for non-main branches.
+
+
+# dbt docs
+dbt docs for this project are now available at [dbt-docs](https://anton-stechman.github.io/dbt-databricks-lakehouse-sample/)
