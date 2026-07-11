@@ -25,21 +25,16 @@ on-run-end:
 # organize models into staging, intermediate, and marts layers, each
 # materialized differently and mapped to its own schema.
 models:
-  databricks_lakehouse_sample:
+  +file_format: delta
+
+  helpers:
+    +materialized: ephemeral
+    +schema: helpers
+
+  marts:
+    +materialized: table
+    +schema: marts
     +file_format: delta
 
-    staging:
-      +materialized: view
-      +schema: staging
-
-    intermediate:
-      +materialized: ephemeral
-
-    marts:
-      +materialized: table
-      +schema: marts
-      +file_format: delta
-
 seeds:
-  databricks_lakehouse_sample:
-    +schema: seeds
+  +schema: seeds
