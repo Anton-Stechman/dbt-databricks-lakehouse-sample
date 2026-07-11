@@ -38,6 +38,11 @@ jobs:
           sqlfluff lint --dialect databricks dbt/
         continue-on-error: false
 
+      - name: dbt parse
+        run: |
+          dbt parse --project-dir dbt/ --profiles-dir dbt/
+        continue-on-error: false
+
       - name: dbt Seed
         run: |
           dbt seed --project-dir dbt/ --profiles-dir dbt/
@@ -46,11 +51,6 @@ jobs:
       - name: dbt Run
         run: |
           dbt run --project-dir dbt/ --profiles-dir dbt/
-        continue-on-error: false
-
-      - name: dbt parse
-        run: |
-          dbt parse --project-dir dbt/ --profiles-dir dbt/
         continue-on-error: false
 
       - name: dbt Test
