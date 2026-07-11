@@ -1,0 +1,51 @@
+version: 2
+models:
+- name: stg_sales_transactions
+  description: Staging view for Sales Transactions
+  config:
+    contract:
+      enforced: true
+      alias_types: true
+  columns:
+  - name: transactionID
+    description: Transactionid
+    data_type: LONG
+  - name: customerID
+    description: Customerid
+    data_type: LONG
+  - name: franchiseID
+    description: Franchiseid
+    data_type: LONG
+  - name: dateTime
+    description: Datetime
+    data_type: TIMESTAMP
+  - name: product
+    description: Product
+    data_type: STRING
+  - name: quantity
+    description: Quantity
+    data_type: LONG
+  - name: unitPrice
+    description: Unitprice
+    data_type: LONG
+  - name: totalPrice
+    description: Totalprice
+    data_type: LONG
+  - name: paymentMethod
+    description: Paymentmethod
+    data_type: STRING
+  - name: cardNumber
+    description: Cardnumber
+    data_type: LONG
+  - name: is_current
+    description: '''{{ doc("is_current") }}'''
+    data_type: BOOLEAN
+  - name: is_deleted
+    description: '''{{ doc("is_deleted") }}'''
+    data_type: BOOLEAN
+  - name: effective_from
+    description: '''{{ doc("effective_from") }}'''
+    data_type: TIMESTAMP
+  - name: effective_to
+    description: '''{{ doc("effective_to") }}'''
+    data_type: TIMESTAMP

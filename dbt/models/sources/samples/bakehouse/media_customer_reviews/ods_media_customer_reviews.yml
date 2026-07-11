@@ -1,0 +1,33 @@
+version: 2
+models:
+- name: ods_media_customer_reviews
+  description: Curated view for Media Customer Reviews
+  config:
+    contract:
+      enforced: true
+      alias_types: true
+  columns:
+  - name: review
+    description: Review
+    data_type: STRING
+  - name: franchiseID
+    description: Franchiseid
+    data_type: LONG
+  - name: review_date
+    description: Review Date
+    data_type: TIMESTAMP
+  - name: new_id
+    description: New Id
+    data_type: INT
+  - name: is_current
+    description: '''{{ doc("is_current") }}'''
+    data_type: BOOLEAN
+  - name: is_deleted
+    description: '''{{ doc("is_deleted") }}'''
+    data_type: BOOLEAN
+  - name: effective_from
+    description: '''{{ doc("effective_from") }}'''
+    data_type: TIMESTAMP
+  - name: effective_to
+    description: '''{{ doc("effective_to") }}'''
+    data_type: TIMESTAMP

@@ -1,0 +1,38 @@
+version: 2
+sources:
+- name: bakehouse
+  database: samples
+  schema: bakehouse
+  tables:
+  - name: sales_transactions
+    columns:
+    - name: transactionID
+      description: Transactionid
+      data_type: LONG
+    - name: customerID
+      description: Customerid
+      data_type: LONG
+    - name: franchiseID
+      description: Franchiseid
+      data_type: LONG
+    - name: dateTime
+      description: Datetime
+      data_type: TIMESTAMP
+    - name: product
+      description: Product
+      data_type: STRING
+    - name: quantity
+      description: Quantity
+      data_type: LONG
+    - name: unitPrice
+      description: Unitprice
+      data_type: LONG
+    - name: totalPrice
+      description: Totalprice
+      data_type: LONG
+    - name: paymentMethod
+      description: Paymentmethod
+      data_type: STRING
+    - name: cardNumber
+      description: Cardnumber
+      data_type: LONG

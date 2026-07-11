@@ -1,11 +1,19 @@
 WITH raw_data AS (
     SELECT
-        {cte-columns}
-    FROM {{ source('{schema}', '{name}') }}
+        franchiseid
+		, review_date
+		, chunked_text
+		, chunk_id
+		, review_uri
+    FROM {{ source('bakehouse', 'media_gold_reviews_chunked') }}
 )
 
 SELECT
-    {columns}
+    franchiseid
+	, review_date
+	, chunked_text
+	, chunk_id
+	, review_uri
     , TRUE AS is_current
     , FALSE AS is_deleted
     , TO_TIMESTAMP('19000101000000', 'yyyyMMddHHmmss') AS effective_from

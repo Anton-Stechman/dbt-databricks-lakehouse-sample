@@ -1,6 +1,6 @@
-WITH raw_data AS  (
+WITH raw_data AS (
     SELECT
-        customerID
+        customerid
 		, first_name
 		, last_name
 		, email_address
@@ -16,7 +16,7 @@ WITH raw_data AS  (
 )
 
 SELECT
-    customerID
+    customerid
 	, first_name
 	, last_name
 	, email_address

@@ -1,15 +1,21 @@
 WITH staging_data AS (
     SELECT
-        {cte-columns}
+        review
+		, franchiseid
+		, review_date
+		, new_id
         , is_current
         , is_deleted
         , effective_from
         , effective_to
-    FROM {{ ref('stg_{name}') }}
+    FROM {{ ref('stg_media_customer_reviews') }}
 )
 
 SELECT
-    {columns}
+    review
+	, franchiseid
+	, review_date
+	, new_id
     , is_current
     , is_deleted
     , effective_from

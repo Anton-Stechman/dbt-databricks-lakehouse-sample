@@ -1,6 +1,6 @@
-WITH staging_data AS  (
+WITH staging_data AS (
     SELECT
-        customerID
+        customerid
 		, first_name
 		, last_name
 		, email_address
@@ -20,7 +20,7 @@ WITH staging_data AS  (
 )
 
 SELECT
-    customerID
+    customerid
 	, first_name
 	, last_name
 	, email_address

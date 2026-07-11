@@ -5,7 +5,7 @@ from typing import Literal
 
 from yaml import safe_load, safe_dump
 
-from framework.utils import file_exists, dir_exists
+from .utils import file_exists, dir_exists
 
 META_PATH: str = os.path.join('.code_generation', 'meta', 'meta.json')
 DEFAULT_COLUMNS: list[dict] = [
@@ -133,11 +133,11 @@ def generate_selected_model(model_name: str, meta: dict | None = None) -> bool:
     column_names: list[str] = list_columns(model_data["columns"])
     columns = format_column_data(model_data["columns"])
     raw_columns = format_column_data(model_data["columns"], False)
-    cte_columns: str = "\n\t\t, ".join(column_names)
-    final_columns: str = "\n\t, ".join(column_names)
+    cte_columns: str = "\n\t\t, ".join(column_names).lower()
+    final_columns: str = "\n\t, ".join(column_names).lower()
 
     # Create output directory
-    output_dir = os.path.join("dbt", "models", "sources", catalog, schema)
+    output_dir = os.path.join("dbt", "models", "sources", catalog, schema, model_name)
     dir_exists(output_dir)
 
     # Generate src file

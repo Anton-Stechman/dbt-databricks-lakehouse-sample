@@ -1,15 +1,23 @@
 WITH staging_data AS (
     SELECT
-        {cte-columns}
+        franchiseid
+		, review_date
+		, chunked_text
+		, chunk_id
+		, review_uri
         , is_current
         , is_deleted
         , effective_from
         , effective_to
-    FROM {{ ref('stg_{name}') }}
+    FROM {{ ref('stg_media_gold_reviews_chunked') }}
 )
 
 SELECT
-    {columns}
+    franchiseid
+	, review_date
+	, chunked_text
+	, chunk_id
+	, review_uri
     , is_current
     , is_deleted
     , effective_from

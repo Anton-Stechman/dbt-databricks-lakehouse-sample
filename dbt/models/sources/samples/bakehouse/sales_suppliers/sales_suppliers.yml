@@ -1,0 +1,38 @@
+version: 2
+sources:
+- name: bakehouse
+  database: samples
+  schema: bakehouse
+  tables:
+  - name: sales_suppliers
+    columns:
+    - name: supplierID
+      description: Supplierid
+      data_type: LONG
+    - name: name
+      description: Name
+      data_type: STRING
+    - name: ingredient
+      description: Ingredient
+      data_type: STRING
+    - name: continent
+      description: Continent
+      data_type: STRING
+    - name: city
+      description: City
+      data_type: STRING
+    - name: district
+      description: District
+      data_type: STRING
+    - name: size
+      description: Size
+      data_type: STRING
+    - name: longitude
+      description: Longitude
+      data_type: DOUBLE
+    - name: latitude
+      description: Latitude
+      data_type: DOUBLE
+    - name: approved
+      description: Approved
+      data_type: STRING
