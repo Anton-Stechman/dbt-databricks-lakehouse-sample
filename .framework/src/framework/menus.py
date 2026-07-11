@@ -29,7 +29,7 @@ def dbt_run_all():
 
 def dbt_run_specific():
     node = input("enter node name: ")
-    dbt_command(COMMAND.RUN,  subcmd={SUBCOMMAND.SELECT: node})
+    dbt_command(COMMAND.RUN, subcmd={SUBCOMMAND.SELECT: node})
 
 def dbt_seed():
     dbt_command(COMMAND.SEED)
@@ -38,10 +38,10 @@ def dbt_compile():
     dbt_command(COMMAND.COMPILE)
 
 def dbt_docs_generate():
-    dbt_command((COMMAND.DOCS_GEN))
+    dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.GENERATE: None})
 
 def dbt_docs_view():
-    dbt_command((COMMAND.DOCS_VIEW))
+    dbt_command(COMMAND.DOCS, subcmd={SUBCOMMAND.SERVE: None})
 
 def dbt_test():
     dbt_command((COMMAND.TEST))
