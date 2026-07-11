@@ -40,7 +40,7 @@ def main_menu() -> None:
 
             try:
                 response = int(raw_response)
-            except ValueError as exc:
+            except ValueError:
                 print(f"selection '{raw_response}' is invalid and not of type {int}")
                 input("press enter to try again... ")
                 continue
