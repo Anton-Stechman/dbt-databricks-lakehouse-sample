@@ -40,11 +40,14 @@ menu run
 
 ## Workflows
 This repository includes four GitHub Actions workflows that cover CI validation, dbt execution, docs publishing, and framework testing:
-
-- `dbt-ci-build.yml` - Runs the dbt validation pipeline for non-main branches, including dependency installation, SQL linting, dbt parse, seed, run, test, schema cleanup, and docs generation.
-- `dbt-docs-release.yml` - Publishes generated dbt documentation to GitHub Pages when changes land on the `prod` branch.
-- `dbt-release.yml` - Executes the production dbt release flow on `prod`, including seed and run steps for the target environment.
 - `framework-ci-build.yml` - Validates the framework package with pylint, pytest, and a build step for non-main branches.
+![diagram](./dbt%20databricks%20sample%20project%20-%20framework-ci-build.png)
+- `dbt-ci-build.yml` - Runs the dbt validation pipeline for non-main branches, including dependency installation, SQL linting, dbt parse, seed, run, test, schema cleanup, and docs generation.
+![diagram](./dbt%20databricks%20sample%20project%20-%20dbt-ci-build.png)
+- `dbt-release.yml` - Executes the production dbt release flow on `prod` or `test`, including seed and run steps for the target environment.
+![diagram](./dbt%20databricks%20sample%20project%20-%20dbt-release-build.png)
+- `dbt-docs-release.yml` - Publishes generated dbt documentation to GitHub Pages when changes land on the `prod`branch.
+![diagram](./dbt%20databricks%20sample%20project%20-%20dbt-docs-release.png)
 
 
 # dbt docs
@@ -87,4 +90,3 @@ This project is open source. **Contributions welcome.** Areas that would benefit
 - Expanded test coverage
 - Documentation improvements
 - Performance optimizations
-

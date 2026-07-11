@@ -18,6 +18,9 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+on-run-end:
+  - "{{ cleanup_orphaned_objects() }}"
+
 # General model configurations. Databricks lakehouse projects typically
 # organize models into staging, intermediate, and marts layers, each
 # materialized differently and mapped to its own schema.
