@@ -42,7 +42,10 @@ def main_menu() -> None:
                 response = int(raw_response)
             except ValueError:
                 print(f"selection '{raw_response}' is invalid and not of type {int}")
-                input("press enter to try again... ")
+                try:
+                    input("press enter to try again... ")
+                except (EOFError, OSError):
+                    print("No input available; returning to the menu.")
                 continue
 
             if response == 0:

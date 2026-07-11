@@ -12,12 +12,14 @@ class DirectoryNotFound(BaseException):
 
 
 def validate_args(*args: str, t: type = str) -> bool:
-    """Validate that all provided values are strings."""
+    """Validate that all provided values are strings and non-empty."""
+    if not args:
+        raise ValueError("`args` is None")
     for arg in args:
         if not isinstance(arg, t):
             raise TypeError(f"Expected type {t} got {type(arg)} for value `{arg}`")
-    if not args:
-        raise ValueError("`args` is None")
+        if t is str and arg == "":
+            raise ValueError("values cannot be empty")
     return True
 
 
@@ -28,7 +30,10 @@ def dir_exists(
     , on_fail: Literal["raise", "return"] = "return"
 ) -> bool:
     """Check if a directory exists or create it if required."""
-    validate_args(*args, target if target else "", t=str)
+    values = list(args)
+    if target is not None:
+        values.append(target)
+    validate_args(*values, t=str)
     path = os.path.join(*args) if args else target
     if autocreate and not os.path.isdir(path):
         os.makedirs(path)
@@ -47,7 +52,10 @@ def file_exists(
     , on_fail: Literal["raise", "return"] = "return"
 ) -> bool:
     """Check if a file exists."""
-    validate_args(*args, target if target else "", t=str)
+    values = list(args)
+    if target is not None:
+        values.append(target)
+    validate_args(*values, t=str)
     path = os.path.join(*args) if args else target
     exists = os.path.isfile(path)
     if on_fail == "return":
