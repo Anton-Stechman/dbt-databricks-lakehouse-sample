@@ -8,9 +8,17 @@ on:
     branches:
       - main
 
+parameters:
+  target: ci
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      TARGET: ci
+      DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
+      DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
+      DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,32 +40,33 @@ jobs:
         run: |
           sqlfluff lint --dialect databricks dbt/
         continue-on-error: false
+
+      - name: dbt Seed
+        run: |
+          dbt seed --project-dir dbt/ --profiles-dir dbt/
+        continue-on-error: false
+
+      - name: dbt Run
+        run: |
+          dbt run --project-dir dbt/ --profiles-dir dbt/
+        continue-on-error: false
+
       - name: dbt parse
         run: |
           dbt parse --project-dir dbt/ --profiles-dir dbt/
         continue-on-error: false
-        env:
-          TARGET: ci
-          DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
-          DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
-          DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}
 
       - name: dbt Test
         run: |
           dbt test --project-dir dbt/ --profiles-dir dbt/
         continue-on-error: false
-        env:
-          TARGET: ci
-          DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
-          DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
-          DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}
+
+      - name: Clean up CI schema
+        if: always()
+        run: |
+          dbt run-operation drop_schema --project-dir dbt/ --profiles-dir dbt/ --args '{schema: ci}'
 
       - name: Generate dbt docs
         run: |
           dbt docs generate --project-dir dbt/ --profiles-dir dbt/
         continue-on-error: false
-        env:
-          TARGET: ci
-          DBT_DATABRICKS_HOST: ${{ secrets.DBT_HOST }}
-          DBT_DATABRICKS_HTTP_PATH: ${{ secrets.DBT_HTTP_PATH }}
-          DBT_DATABRICKS_TOKEN: ${{ secrets.DBT_TOKEN }}
