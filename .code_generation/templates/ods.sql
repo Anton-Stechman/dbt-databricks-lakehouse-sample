@@ -1,11 +1,11 @@
 WITH staging_data AS  (
     SELECT
-        {columns}
+        {cte-columns}
         , is_current
         , is_deleted
         , effective_from
         , effective_to
-    FROM {{ source('{schema}', '{table}') }}
+    FROM {{ ref('stg_{name}') }}
 )
 
 SELECT

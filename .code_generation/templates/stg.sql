@@ -1,7 +1,7 @@
 WITH raw_data AS  (
     SELECT
-        {columns}
-    FROM {{ source('{schema}', '{table}') }}
+        {cte-columns}
+    FROM {{ source('{schema}', '{name}') }}
 )
 
 SELECT
